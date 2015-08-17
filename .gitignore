@@ -1,3 +1,4 @@
 *.py[oc]
 *.sublime-workspace
 __pycache__/
+*.wav
