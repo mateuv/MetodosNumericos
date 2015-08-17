@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.io.wavfile import read, write
+from scipy.io import wavfile
 from time import time
 import sys
 import os
@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     print('leyendo %s'%archivo)
 
-    rate, signal = read(archivo)
+    rate, signal = wavfile.read(archivo)
 
     print('rate: %d'%rate)
 
@@ -42,9 +42,7 @@ if __name__ == '__main__':
 
     nombre = archivo.split('.')[0]
 
-    write(nombre + '_transformada.wav', rate, np.array([
+    wavfile.write(nombre + '_transformada.wav', rate, np.array([
         np.abs(i)
         for i in transformada
     ], dtype=np.int16))
-
-    # Creación de una imagen a partir de la transformada
