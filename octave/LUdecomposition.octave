@@ -1,0 +1,31 @@
+# Ejemplo de descomposición LU de una matriz
+
+# La matriz
+A = [
+        [ 2, -1,   0,  0,  0,  0],
+        [-1,  2,  -1,  0,  0,  0],
+        [0,  -1, 2/3, -1,  0,  0],
+        [0,   0,  -1,  2, -1,  0],
+        [0,   0,   0, -1,  2, -1],
+        [0,   0,   0,  0, -1,  2],
+    ]
+
+printf("Descomposicion de doolitle\n");
+[L, U] = lu(A)
+
+# Obtenemos los valores propios de la matriz, para ver si es definida positiva
+printf("valores propios:\n");
+eigen = eigs(A)
+
+printf("Como uno de los valores propios es negativo, esta matriz no es definida positiva, entonces no se puede usar cholesky\n");
+
+# Vector
+b = transpose([3, 5, 13/3, -9, 11, -9])
+
+# Ahora se resuelve el sistema
+
+printf("Solución deseada del sistema:\n");
+A \ b
+
+printf("Solución obtenida de la descomposición LU:\n");
+U \ (L \ b)
